@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SYSTEM LOCK-ID</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="background">
+    <div class="binary-scroll"></div>
+    <div class="grid-move"></div>
+  </div>
+
+  <main class="container">
+    <section class="panel">
+      
+      <!-- Lightning Effect -->
+      <div class="lightning">
+        <svg viewBox="0 0 200 60">
+          <polyline points="0,30 40,10 80,35 120,5 160,40 200,20"/>
+        </svg>
+      </div>
+
+      <h1>SYSTEM LOCK-ID</h1>
+
+      <form id="lockForm">
+        <div class="form-group">
+          <label for="userId">User ID</label>
+          <input id="userId" type="text" value="USER-10293" required />
+        </div>
+
+        <div class="form-group">
+          <label for="provider">Provider</label>
+          <select id="provider">
+            <option selected>PG SOFT</option>
+            <option>PRAGMATIC</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="game">Game</label>
+          <select id="game">
+            <option selected>MAHJONG WAYS</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="server">Server</label>
+          <select id="server">
+            <option selected>ASIA TENGGARA</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="winrate">Winrate</label>
+          <select id="winrate">
+            <option selected>99%</option>
+            <option>95%</option>
+            <option>90%</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="kode">Kode Aktivasi</label>
+          <input id="kode" type="text" inputmode="numeric" value="80.000"/>
+        </div>
+
+        <button type="submit" class="btn">ACTIVATE</button>
+      </form>
+
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast">✅ Data berhasil diaktifkan</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
