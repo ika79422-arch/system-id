@@ -1,0 +1,181 @@
+:root {
+  --neon: #00eaff;
+  --neon-soft: rgba(0,234,255,.4);
+  --bg-light: #eef9ff;
+  --panel-bg: rgba(255,255,255,.85);
+  --text-dark: #0a2540;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-light);
+  overflow-x: hidden;
+  color: var(--text-dark);
+}
+
+/* BACKGROUND */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.binary-scroll {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0,200,255,0.05) 0,
+    rgba(0,200,255,0.05) 2px,
+    transparent 2px,
+    transparent 40px
+  );
+  animation: scrollBg 20s linear infinite;
+}
+
+.grid-move {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(0,200,255,.15)),
+    linear-gradient(90deg, transparent 95%, rgba(0,200,255,.15));
+  background-size: 40px 40px;
+  animation: gridMove 25s linear infinite;
+}
+
+@keyframes scrollBg {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
+}
+
+/* PANEL */
+.container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  background: var(--panel-bg);
+  border-radius: 14px;
+  border: 2px solid var(--neon);
+  box-shadow: 0 0 30px var(--neon-soft);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, var(--neon), transparent, #7f7cff);
+  opacity: .4;
+  z-index: -1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--neon);
+  letter-spacing: 2px;
+}
+
+/* LIGHTNING */
+.lightning svg {
+  width: 100%;
+  height: 40px;
+  stroke: var(--neon);
+  stroke-width: 2;
+  fill: none;
+  filter: drop-shadow(0 0 8px var(--neon));
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+/* FORM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--neon);
+  background: #f9fdff;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--neon-soft);
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--neon), #7f7cff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px var(--neon);
+}
+
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px var(--neon-soft);
+  opacity: 0;
+  pointer-events: none;
+  transition: .4s;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .panel {
+    padding: 22px;
+  }
+}
